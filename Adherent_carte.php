@@ -1,7 +1,7 @@
 <?php
 include("./cnx.php");
 
-   $ouvrage = "SELECT * FROM ouvrage group by Titre";
+   $ouvrage = "SELECT * FROM ouvrage LEFT JOIN reservation ON ouvrage.Id_ouv = reservation.Id_ouv WHERE reservation.Id_ouv IS NULL GROUP BY ouvrage.Titre ORDER BY ouvrage.Id_ouv LIMIT 0, 25";
    $ouvrageReslt = $cnx->prepare($ouvrage);
    $ouvrageReslt->execute();
 
