@@ -1,6 +1,6 @@
 <?php include("./cnx.php"); 
-
 session_start();
+
 $PassVerf ="";
 $surnomVerf = "";
 if (isset($_POST["connecter"])) {
@@ -8,7 +8,7 @@ if (isset($_POST["connecter"])) {
     $password = $_POST["pass"];
 
         $Rsurnom = "SELECT * FROM Adherent WHERE  Surnom_ad = '$surnom'";
-        $RPassword = "SELECT * FROM Adherent WHERE Password = '$password'";
+        $RPassword = "SELECT * FROM Adherent WHERE Password = '$password' and Surnom_ad = '$surnom'";
 
         $RsultAdherentS = $cnx->prepare($Rsurnom);
         $RsultAdherentS->execute();
@@ -28,8 +28,8 @@ if (isset($_POST["connecter"])) {
         }elseif (!$ligneP && !password_verify($password, $ligneS["Password"])) {
             $PassVerf = "Mot de passe saisi est un incorrect";
         }else{
-            $_SESSION["Id"]= $ligneS["Id_ad"];
-            header("Location:./AccueilAd.php");     
+            $_SESSION["nikeN"]= $surnom;
+            header("Location:./Adherent_Accueil.php");     
         }  
 }
 ?>
@@ -63,7 +63,7 @@ if (isset($_POST["connecter"])) {
                             </div>
                            <div class='form-group m-2 ms-1 '>
                                <button type='submit' class='btn rounded-pill border-1 text-light' style="background-color:#DBBB68;" name="connecter">connecter</button>
-                               <a href='./S_inscrire.php'>S'inscrire</a>
+                               <a href='./Adherent__Sinscrire.php'>S'inscrire</a>
                            </div>
            </form>
 </div>

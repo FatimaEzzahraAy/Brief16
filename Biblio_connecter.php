@@ -7,7 +7,7 @@ if (isset($_POST["connecter"])) {
     $password = $_POST["pass"];
 
         $Rlogin = "SELECT * FROM bibliothécaire WHERE  Login = '$login'";
-        $RPassword = "SELECT * FROM bibliothécaire WHERE Password_Biblio = '$password'";
+        $RPassword = "SELECT * FROM bibliothécaire WHERE Password_Biblio = '$password' and Login = '$login'";
 
         $RsultbiblioL = $cnx->prepare($Rlogin);
         $RsultbiblioL->execute();
@@ -24,11 +24,11 @@ if (isset($_POST["connecter"])) {
         $PassVerf = "Veuillez saisir votre mot de passe";
     }elseif (!$ligneL) {
             $loginVerf = "le login saisi est un incorrect";
-        }elseif (!$ligneP && !password_verify($password, $ligneL["Password"])) {
+        }elseif (!$ligneP && !password_verify($password, $ligneL["Password_biblio"])) {
             $PassVerf = "Mot de passe saisi est un incorrect";
         }else{
             $_SESSION["Id"]= $ligneL["Id_biblio"];
-            header("Location:./AccueilBiblio.php");     
+            header("Location:./Biblio_Accueil.php");     
         }  
 }
 ?>

@@ -1,5 +1,5 @@
 <?php include("./cnx.php"); 
-
+session_start();
     if (isset($_POST["valider"])) {
         $nom = $_POST["nom"];
         $email = $_POST["email"];
@@ -19,6 +19,7 @@
         $Adherent ="INSERT INTO `adherent` (`Nom_ad`, `Add_ad`, `Email_ad`, `Tel_ad`, `Cin_ad`, `DateN_ad`, `Type_ad`, `Surnom_ad`, `Password`, `DateO_cpt_ad`, `Penalite_ad`) VALUES ('$nom', '$add', '$email', '$tel', '$cin', '$daten', '$type', '$surnom', '$passCrypte', '$dateAuj', '$penalite')";
         $RsultAdherent = $cnx->prepare($Adherent);
         $RsultAdherent->execute();
+        $_SESSION["nikeN"] = $surnom;
         header("location:./AccueilAd.php"); 
     }
 

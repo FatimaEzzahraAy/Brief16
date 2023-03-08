@@ -1,3 +1,7 @@
+<?php include("./cnx.php");
+session_start();
+$nikeN = $_SESSION["nikeN"];
+?>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#152242;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img  class="ms-1" src="./img/logoN.png" width="60" height="42"></a>
@@ -15,18 +19,18 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active text-light" aria-current="page" href="./AccueilAd.php"
+                <a class="nav-link active text-light" aria-current="page" href="./Adherent_Accueil.php"
                   >Accueil</a
                 >
               </li>
             </ul>
-            <span class="rounded-pill text-light me-2 ps-2 pe-2"
-              >Nom</span
-            >
-            <a class="navbar-brand" href="./ProfilAd.php"
+            <?php echo "<span class='rounded-pill text-light me-2 ps-2 pe-2'
+              >$nikeN"?>
+             <?php echo "</span>"?>
+            <a class="navbar-brand" href="./Adherent_Profil.php"
               ><img src="./img/profil.jpg" alt="Profil" class="bg-light rounded-circle" width="30" height="30"
             /></a>
-            <a class="navbar-brand" href="./reservationAd.php"
+            <a class="navbar-brand" href="./Adherent_reservation.php"
               ><img src="./img/reserver.png" alt="Reserver" width="30" height="30" class="bg-light rounded-circle border border-2 border-dark"
             /></a>
             <a class="navbar-brand" href="./deconnecter.php"
