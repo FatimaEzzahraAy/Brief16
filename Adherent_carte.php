@@ -1,21 +1,24 @@
 <?php
 include("./cnx.php");
-session_start();
 
-   $ouvrage = "SELECT * FROM ouvrage";
+   $ouvrage = "SELECT * FROM ouvrage group by Titre";
    $ouvrageReslt = $cnx->prepare($ouvrage);
    $ouvrageReslt->execute();
 
    while ($ligneO = $ouvrageReslt->fetch(PDO::FETCH_ASSOC)) {
     echo
-   "<div class='p-3 m-0 border-0 bd-example'>   
-        <div class='card text-bg-dark'>
-        <img src='https://www.actusf.com/files/images/articles/content/1984.png' class='card-img' width='100%' >
-        <div class='card-img-overlay'>
-            <button class='btn btn-primary '>Reserver</button>
-        </div>
-    </div>";
+   "    <div class='row'>
+            <div class='col-sm-6 mb-3 mb-sm-0'>
+                <div class='card  col-xs-12  col-md-5  col-xl-3 my-5 ' style='width:350px;hight:350px'>
+                    <img src='./img/$ligneO[Img_couv]'  alt='$ligneO[Img_couv]' class='card-img'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>$ligneO[Titre]</h5>
+                            <a href='#' class='btn btn-primary'>Reserver</a>
+                        </div>
+                </div>
+            </div>
+        </div>";
    }
-  
 
+  
 ?>

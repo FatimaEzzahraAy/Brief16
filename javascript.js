@@ -1,4 +1,3 @@
-
 function ValideNom() {
   let nom = document.getElementById("nom");
   let NomVerf = document.getElementById("NomVerf");
@@ -53,15 +52,15 @@ function dateN() {
 }
 
 function ValideDateN() {
-let datenais = new Date(document.getElementById("datenais").value);
-let DateNVerf = document.getElementById("DateNVerf");
-annee = datenais.getFullYear();
-anneeAuj = new Date().getFullYear();
-let min = anneeAuj - annee ;
+  let datenais = new Date(document.getElementById("datenais").value);
+  let DateNVerf = document.getElementById("DateNVerf");
+  annee = datenais.getFullYear();
+  anneeAuj = new Date().getFullYear();
+  let min = anneeAuj - annee;
 
-  if(annee == anneeAuj || min < 12){
-    DateNVerf.innerHTML ="Veuillez selectionnez vôtre date de naissance";
-  }else  DateNVerf.innerHTML ="";
+  if (annee == anneeAuj || min < 12) {
+    DateNVerf.innerHTML = "Veuillez selectionnez vôtre date de naissance";
+  } else DateNVerf.innerHTML = "";
 }
 
 function ValideConfPass() {
@@ -70,22 +69,23 @@ function ValideConfPass() {
   let ConfVerf = document.getElementById("ConfVerf");
 
   if (pass != confpass) {
-    ConfVerf.innerHTML ="Mot de passe inccorecte";
+    ConfVerf.innerHTML = "Mot de passe inccorecte";
   } else {
-    ConfVerf.innerHTML ="";
+    ConfVerf.innerHTML = "";
   }
 }
 
-// function ValideEmail() {//!!!
-//   let email = document.getElementById("email");
-//   let EmailVerf = document.getElementById("EmailVerf");
-//   let emailRegExp = new RegExp("[/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/]","g");
-//   if (emailRegExp.test(email.value)) {
-//     EmailVerf.innerHTML = "un email inccorcte";
-//   } else {
-//     EmailVerf.innerHTML = "";
-//   }
-// }
+function ValideEmail() {
+  //!!!
+  let email = document.getElementById("email");
+  let EmailVerf = document.getElementById("EmailVerf");
+  let emailRegExp = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+  if (email.value.match(emailRegExp)) {
+    EmailVerf.innerHTML = "";
+  } else {
+    EmailVerf.innerHTML = "un email inccorcte";
+  }
+}
 
 // function ValideSurnom() {
 //   let surnom = document.getElementById("surnom");
@@ -94,5 +94,3 @@ function ValideConfPass() {
 
 // function ValidePass() {
 // }
-
-

@@ -46,7 +46,12 @@
             <div class="form-group col-6 col-md-2 col-lg-2 m-3">
                 <button name="submit_search" type="submit" class="btn rounded-4 btn-lg  w-100 text-light" style="background-color:#152242;">Rechercher</button>
       </div>
-      
     </header>
+    <main>
+      <div class='cards d-flex  align-items-center justify-content-around flex-wrap'>
+        
+        <?php include("./Adherent_carte.php")?>
+      </div>
+    </main>
 </body>
 </html>
