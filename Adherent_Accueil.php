@@ -1,5 +1,4 @@
 <?php include("./cnx.php");
-// session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,17 +49,6 @@
                 <button name="submit_search" type="submit" class="btn rounded-4 btn-lg  w-100 text-light" style="background-color:#152242;">Rechercher</button>
       </div>
 
-      <div class="input-group mb-3">
-      <input type="text" class="form-control" aria-label="Text input with dropdown button">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-      <ul class="dropdown-menu dropdown-menu-end" style="">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>  
-    </div>
 
 
     </header>

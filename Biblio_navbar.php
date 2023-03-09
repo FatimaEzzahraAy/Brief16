@@ -31,7 +31,7 @@
         </li>
             </ul>
             <form class="d-flex">
-                <a class="navbar-brand" href="./deconnecter.php"
+                <a class="navbar-brand" href="./Biblio_deconnecter.php"
               ><img src="./img/eteindre.png" alt="Eteindre" class="bg-light rounded-circle" width="30" height="30"
             /></a>
             </form>

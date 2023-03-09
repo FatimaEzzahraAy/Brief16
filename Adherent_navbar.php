@@ -1,6 +1,10 @@
 <?php include("./cnx.php");
 session_start();
+if (isset($_SESSION["nikeN"])) {
 $nikeN = $_SESSION["nikeN"];
+}else {
+  header("location:./index.php");
+}
 ?>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#152242;">
   <div class="container-fluid">
@@ -33,7 +37,7 @@ $nikeN = $_SESSION["nikeN"];
             <a class="navbar-brand" href="./Adherent_reservation.php"
               ><img src="./img/reserver.png" alt="Reserver" width="30" height="30" class="bg-light rounded-circle border border-2 border-dark"
             /></a>
-            <a class="navbar-brand" href="./deconnecter.php"
+            <a class="navbar-brand" href="./Adherent_deconnecter.php"
               ><img src="./img/eteindre.png" alt="Eteindre" class="bg-light rounded-circle" width="30" height="30"
             /></a>
           </div>
