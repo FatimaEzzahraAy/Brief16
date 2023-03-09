@@ -26,7 +26,7 @@
                 <input type="text" class="form-control w-100" name="ville" placeholder="Rechercher" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <!-- Type -->
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 m-3">
+            <!-- <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 m-3">
                 <select class="form-select w-100" name="type" aria-label=".form-select example">
                 <option value="tout_type">Tout Type :</option>
                 <option value="Roman">Roman</option>
@@ -34,7 +34,7 @@
                 <option value="Magazine">Magazine</option>
                 <option value="DVD">DVD</option>
                 </select>
-            </div>
+            </div> -->
             <!-- categorie -->
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 m-3">
                 <select class="form-select w-100" name="type" aria-label=".form-select example">
@@ -48,14 +48,30 @@
             <div class="form-group col-6 col-md-2 col-lg-2 m-3">
                 <button name="submit_search" type="submit" class="btn rounded-4 btn-lg  w-100 text-light" style="background-color:#152242;">Rechercher</button>
       </div>
-
-
-
     </header>
     <main>
       <div class='cards d-flex  align-items-center justify-content-around flex-wrap'>
         
-        <?php include("./Adherent_carte.php")?>
+        <?php include("./Adherent_carte.php");
+        if (isset($_POST["reserver"])) {
+            $IdOuvrage =  $_POST["reserver"];
+            $IdAd = $_SESSION["IdAd"];
+            $dateAuj = date('d-m-y h:i:s');
+
+            $countReser = "SELECT COUNT(Id_ad) FROM `reservation` WHERE Id_ad = '$IdAd'";
+            $countReserReslt =  $cnx->prepare($countReser);
+            $countReserReslt->execute();
+            $ligneC = $countReserReslt->fetch(PDO::FETCH_ASSOC);
+             
+            if ($ligneC["COUNT(Id_ad)"] < 3) {
+                $Reservation ="INSERT INTO `reservation` (`Date_rev`, `Id_ad`, `Id_ouv`) VALUES ('$dateAuj', '$IdAd', '$IdOuvrage')";
+                $ReservationReslt = $cnx->prepare($Reservation);
+                $ReservationReslt->execute();
+                echo "avec succees";
+            }else {
+                echo "vous ne peuvez pas depassez 3 ouvrages";//fenetre mondal
+            }
+          }?>
       </div>
     </main>
 </body>

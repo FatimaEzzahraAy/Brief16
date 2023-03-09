@@ -29,6 +29,7 @@ if (isset($_POST["connecter"])) {
             $PassVerf = "Mot de passe saisi est un incorrect";
         }else{
             $_SESSION["nikeN"]= $surnom;
+            $_SESSION["IdAd"]= $ligneS["Id_ad"];
             header("Location:./Adherent_Accueil.php");     
         }  
 }
