@@ -1,13 +1,20 @@
 <?php
     include("./cnx.php");
-    session_start();
-    $nikeN = $_SESSION["nikeN"];
+    // session_start();
+    // $nikeN = $_SESSION["nikeN"];
 
-   $ouvrage = "SELECT * FROM ouvrage LEFT JOIN reservation ON ouvrage.Id_ouv = reservation.Id_ouv WHERE reservation.Id_ouv IS NULL GROUP BY ouvrage.Titre ORDER BY ouvrage.Id_ouv LIMIT 0, 25";
+   $ouvrage = "SELECT * FROM ouvrage GROUP BY ouvrage.Titre ORDER BY ouvrage.Id_ouv";
    $ouvrageReslt = $cnx->prepare($ouvrage);
    $ouvrageReslt->execute();
 
+   $ouvrageRes = "SELECT * FROM ouvrage JOIN reservation ON ouvrage.Id_ouv = reservation.Id_ouv";
+   $ouvrageResReslt = $cnx->prepare($ouvrageRes);
+   $ouvrageResReslt->execute();
+
    while ($ligneO = $ouvrageReslt->fetch(PDO::FETCH_ASSOC)) {
+    if (condition) {
+        # code...
+    }
     echo
    "    <div class='row'>
             <div class='col-sm-6 mb-3 mb-sm-0'>
